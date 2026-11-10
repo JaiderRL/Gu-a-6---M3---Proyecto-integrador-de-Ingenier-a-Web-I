@@ -30,8 +30,7 @@ En las bibliotecas comunitarias la información está dispersa: el catálogo sol
 ├── media/                Video del recorrido (MP4) y póster
 └── docs/
     ├── Documentacion-Proyecto-Lumen.pdf
-    ├── evidencias/       Capturas en computador, tableta y móvil
-    └── fuente/           Fuente HTML del documento y script para regenerar el PDF
+    └── evidencias/       Capturas en computador, tableta y móvil
 ```
 
 ## Tecnologías
