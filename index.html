@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Lumen, biblioteca virtual comunitaria: consulta el catálogo, reserva libros y participa en eventos culturales.">
+  <title>Lumen | Biblioteca Virtual Comunitaria</title>
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- ================= ENCABEZADO ================= -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="Lumen, ir al inicio">
+        <img src="img/logo.svg" alt="" width="40" height="40">
+        <span>
+          <span class="brand__name">Lumen</span>
+          <span class="brand__tag">Biblioteca virtual comunitaria</span>
+        </span>
+      </a>
+      <nav class="main-nav" id="menu-principal" aria-label="Menú principal">
+        <ul class="main-nav__list">
+          <li><a class="main-nav__link" href="index.html" aria-current="page">Inicio</a></li>
+          <li><a class="main-nav__link" href="catalogo.html">Catálogo</a></li>
+          <li><a class="main-nav__link" href="eventos.html">Eventos</a></li>
+          <li><a class="main-nav__link" href="reservas.html">Reservas y contacto</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn theme-toggle" type="button" aria-label="Activar tema oscuro" title="Cambiar tema">☾</button>
+        <button class="icon-btn nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú">
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <!-- ================= HERO ================= -->
+    <section class="hero" aria-labelledby="hero-titulo">
+      <div class="container hero__grid">
+        <div class="hero__text">
+          <span class="eyebrow">Lectura sin barreras</span>
+          <h1 id="hero-titulo">Tu biblioteca del barrio, ahora en tu bolsillo</h1>
+          <p class="hero__lead">Consulta qué libros están disponibles, apártalos en línea y recógelos sin filas. Además, entérate de los clubes de lectura y talleres gratuitos de la comunidad.</p>
+
+          <form class="search-quick" action="catalogo.html" method="get" role="search">
+            <label for="busqueda-rapida" class="visually-hidden">Buscar un libro por título o autor</label>
+            <input id="busqueda-rapida" type="search" name="q" placeholder="Busca por título o autor…" autocomplete="off">
+            <button class="btn btn--dark btn--small" type="submit">Buscar</button>
+          </form>
+
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="catalogo.html">Explorar catálogo</a>
+            <a class="btn btn--ghost" href="reservas.html">Reservar un libro</a>
+          </div>
+        </div>
+        <figure class="hero__media">
+          <img src="img/hero.svg" alt="Ilustración de una persona leyendo frente a estanterías con libros" width="600" height="520">
+        </figure>
+      </div>
+    </section>
+
+    <!-- ================= INDICADORES ================= -->
+    <section class="container" aria-label="La biblioteca en cifras">
+      <dl class="stats reveal">
+        <div><dt>Títulos disponibles</dt><dd data-count="4800">4800</dd></div>
+        <div><dt>Lectores inscritos</dt><dd data-count="1250">1250</dd></div>
+        <div><dt>Eventos al año</dt><dd data-count="96">96</dd></div>
+        <div><dt>Préstamos al mes</dt><dd data-count="640">640</dd></div>
+      </dl>
+    </section>
+
+    <!-- ================= SERVICIOS ================= -->
+    <section class="section" aria-labelledby="servicios-titulo">
+      <div class="container">
+        <header class="section__head">
+          <span class="eyebrow">¿Qué puedes hacer?</span>
+          <h2 id="servicios-titulo">Servicios pensados para la comunidad</h2>
+          <p>Lumen reúne en un solo lugar la información que antes estaba dispersa en carteleras y grupos de mensajería.</p>
+        </header>
+        <div class="grid">
+          <article class="card service-card reveal">
+            <div class="service-card__icon" aria-hidden="true">📚</div>
+            <h3>Catálogo en línea</h3>
+            <p>Busca por título, autor o categoría y mira si el ejemplar está disponible antes de salir de casa.</p>
+          </article>
+          <article class="card service-card reveal">
+            <div class="service-card__icon" aria-hidden="true">🗓️</div>
+            <h3>Reserva de préstamos</h3>
+            <p>Aparta un libro con tu documento y escoge el día de recogida. Lo guardamos por 48 horas.</p>
+          </article>
+          <article class="card service-card reveal">
+            <div class="service-card__icon" aria-hidden="true">🎭</div>
+            <h3>Agenda cultural</h3>
+            <p>Clubes de lectura, hora del cuento y talleres gratuitos para todas las edades.</p>
+          </article>
+          <article class="card service-card reveal">
+            <div class="service-card__icon" aria-hidden="true">💻</div>
+            <h3>Sala de cómputo</h3>
+            <p>Equipos con internet y acompañamiento para trámites, tareas y alfabetización digital.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= LIBROS DESTACADOS ================= -->
+    <section class="section section--alt" aria-labelledby="destacados-titulo">
+      <div class="container">
+        <header class="section__head">
+          <span class="eyebrow">Recomendados del mes</span>
+          <h2 id="destacados-titulo">Libros destacados</h2>
+          <p>Una selección del equipo de la biblioteca. Toca «Reservar» para apartarlo.</p>
+        </header>
+        <div class="grid grid--featured">
+          <article class="card book-card reveal">
+            <div class="book-card__cover">
+              <img src="img/libros/cien-anos.svg" alt="Portada de Cien años de soledad" width="300" height="450" loading="lazy">
+              <span class="badge badge--ok">Disponible</span>
+            </div>
+            <div class="card__body">
+              <h3>Cien años de soledad</h3>
+              <p class="book-card__meta">Gabriel García Márquez · Literatura</p>
+              <div class="card__footer">
+                <a class="btn btn--dark btn--small" href="reservas.html?libro=Cien%20a%C3%B1os%20de%20soledad">Reservar</a>
+              </div>
+            </div>
+          </article>
+          <article class="card book-card reveal">
+            <div class="book-card__cover">
+              <img src="img/libros/cosmos.svg" alt="Portada de Cosmos" width="300" height="450" loading="lazy">
+              <span class="badge badge--ok">Disponible</span>
+            </div>
+            <div class="card__body">
+              <h3>Cosmos</h3>
+              <p class="book-card__meta">Carl Sagan · Ciencia</p>
+              <div class="card__footer">
+                <a class="btn btn--dark btn--small" href="reservas.html?libro=Cosmos">Reservar</a>
+              </div>
+            </div>
+          </article>
+          <article class="card book-card reveal">
+            <div class="book-card__cover">
+              <img src="img/libros/principito.svg" alt="Portada de El principito" width="300" height="450" loading="lazy">
+              <span class="badge badge--wait">Prestado</span>
+            </div>
+            <div class="card__body">
+              <h3>El principito</h3>
+              <p class="book-card__meta">Antoine de Saint-Exupéry · Infantil</p>
+              <div class="card__footer">
+                <a class="btn btn--ghost btn--small" href="catalogo.html?categoria=infantil">Ver similares</a>
+              </div>
+            </div>
+          </article>
+          <article class="card book-card reveal">
+            <div class="book-card__cover">
+              <img src="img/libros/clean-code.svg" alt="Portada de Código limpio" width="300" height="450" loading="lazy">
+              <span class="badge badge--ok">Disponible</span>
+            </div>
+            <div class="card__body">
+              <h3>Código limpio</h3>
+              <p class="book-card__meta">Robert C. Martin · Tecnología</p>
+              <div class="card__footer">
+                <a class="btn btn--dark btn--small" href="reservas.html?libro=C%C3%B3digo%20limpio">Reservar</a>
+              </div>
+            </div>
+          </article>
+        </div>
+        <p style="margin-top:1.5rem"><a class="btn btn--ghost" href="catalogo.html">Ver todo el catálogo →</a></p>
+      </div>
+    </section>
+
+    <!-- ================= TESTIMONIOS ================= -->
+    <section class="section" aria-labelledby="testimonios-titulo">
+      <div class="container">
+        <header class="section__head section__head--center">
+          <span class="eyebrow">Voces de la comunidad</span>
+          <h2 id="testimonios-titulo">Lo que dicen nuestros lectores</h2>
+        </header>
+        <div class="grid">
+          <blockquote class="quote reveal">
+            <p>“Antes iba hasta la biblioteca y el libro estaba prestado. Ahora reviso desde el celular y lo aparto.”</p>
+            <footer>— Marta, lectora desde 2019</footer>
+          </blockquote>
+          <blockquote class="quote reveal">
+            <p>“Mis hijos esperan cada sábado la hora del cuento. La agenda en la página me ayuda a no olvidarla.”</p>
+            <footer>— Andrés, padre de familia</footer>
+          </blockquote>
+          <blockquote class="quote reveal">
+            <p>“En la sala de cómputo aprendí a hacer mis trámites en línea. El taller fue muy claro.”</p>
+            <footer>— Don Luis, 67 años</footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PREGUNTAS FRECUENTES ================= -->
+    <section class="section section--alt" aria-labelledby="faq-titulo">
+      <div class="container">
+        <header class="section__head section__head--center">
+          <span class="eyebrow">Resolvemos tus dudas</span>
+          <h2 id="faq-titulo">Preguntas frecuentes</h2>
+        </header>
+        <div class="faq">
+          <details>
+            <summary>¿Cuánto cuesta inscribirse?</summary>
+            <p>Nada. La inscripción es gratuita para cualquier persona. Solo necesitas tu documento de identidad y un comprobante de residencia en el municipio.</p>
+          </details>
+          <details>
+            <summary>¿Cuántos libros puedo llevar a la vez?</summary>
+            <p>Hasta tres libros por un periodo de 15 días, renovables una vez si nadie más los ha reservado.</p>
+          </details>
+          <details>
+            <summary>¿Qué pasa si no recojo mi reserva?</summary>
+            <p>Guardamos el libro durante 48 horas desde la fecha elegida. Después vuelve a quedar disponible para otros lectores.</p>
+          </details>
+          <details>
+            <summary>¿Los eventos tienen costo?</summary>
+            <p>Todos los eventos son gratuitos. Algunos tienen cupos limitados, por eso recomendamos guardarlos en tu agenda y llegar a tiempo.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= LLAMADO A LA ACCIÓN ================= -->
+    <section class="section" aria-labelledby="cta-titulo">
+      <div class="container">
+        <div class="cta reveal">
+          <div>
+            <h2 id="cta-titulo">¿Listo para tu próxima lectura?</h2>
+            <p>Reserva hoy y recoge tu libro mañana en el mostrador principal.</p>
+          </div>
+          <a class="btn btn--primary" href="reservas.html">Hacer una reserva</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= PIE DE PÁGINA ================= -->
+  <footer class="site-footer">
+    <div class="container footer__grid">
+      <section>
+        <h2>Lumen · Biblioteca Virtual Comunitaria</h2>
+        <p>Proyecto integrador de Ingeniería Web I. Interfaz desarrollada con HTML5, CSS3 y JavaScript.</p>
+      </section>
+      <nav aria-label="Enlaces del pie de página">
+        <h2>Navegación</h2>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="catalogo.html">Catálogo</a></li>
+          <li><a href="eventos.html">Eventos</a></li>
+          <li><a href="reservas.html">Reservas y contacto</a></li>
+        </ul>
+      </nav>
+      <section>
+        <h2>Horario</h2>
+        <ul>
+          <li>Lun a vie: 8:00 a 19:00</li>
+          <li>Sábado: 9:00 a 14:00</li>
+          <li>Domingo: cerrado</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Contacto</h2>
+        <address>
+          <ul>
+            <li>Calle 10 # 5-23, Centro</li>
+            <li><a href="tel:+576020000000">(602) 000 0000</a></li>
+            <li><a href="mailto:contacto@lumen-biblioteca.org">contacto@lumen-biblioteca.org</a></li>
+          </ul>
+        </address>
+      </section>
+    </div>
+    <p class="footer__bottom container">© <span class="js-year">2026</span> Lumen. Sitio académico sin fines comerciales.</p>
+  </footer>
+
+  <a class="btn btn--primary back-to-top" href="#contenido" aria-label="Volver arriba">↑</a>
+</body>
+</html>

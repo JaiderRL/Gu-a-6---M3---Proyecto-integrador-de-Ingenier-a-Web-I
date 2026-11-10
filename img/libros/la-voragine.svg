@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 450" role="img" aria-label="Portada de La vorágine">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1f4d3a"/><stop offset="1" stop-color="#1f4d3a" stop-opacity=".78"/></linearGradient></defs>
+  <rect width="300" height="450" fill="#0d1b1a"/>
+  <rect width="300" height="450" fill="url(#g)"/>
+  <rect x="0" y="0" width="14" height="450" fill="#00000033"/>
+  <rect x="22" y="22" width="256" height="406" fill="none" stroke="#fffaf055" stroke-width="2"/>
+  <path d="M30 160q30-25 60 0t60 0t60 0t60 0" fill="none" stroke="#8fbf6a" stroke-width="8" stroke-linecap="round" opacity="1"/><path d="M30 200q30-25 60 0t60 0t60 0t60 0" fill="none" stroke="#8fbf6a" stroke-width="8" stroke-linecap="round" opacity="0.8200000000000001"/><path d="M30 240q30-25 60 0t60 0t60 0t60 0" fill="none" stroke="#8fbf6a" stroke-width="8" stroke-linecap="round" opacity="0.64"/><path d="M30 280q30-25 60 0t60 0t60 0t60 0" fill="none" stroke="#8fbf6a" stroke-width="8" stroke-linecap="round" opacity="0.45999999999999996"/>
+  <text x="150" y="345" text-anchor="middle" font-family="Georgia, serif" font-size="26" font-weight="700" fill="#fffaf0">LA VORÁGINE</text>
+  <text x="150" y="393" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" letter-spacing="1" fill="#fffaf0cc">José Eustasio Rivera</text>
+</svg>

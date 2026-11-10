@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 450" role="img" aria-label="Portada de JavaScript elocuente">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2d2a26"/><stop offset="1" stop-color="#2d2a26" stop-opacity=".78"/></linearGradient></defs>
+  <rect width="300" height="450" fill="#0d1b1a"/>
+  <rect width="300" height="450" fill="url(#g)"/>
+  <rect x="0" y="0" width="14" height="450" fill="#00000033"/>
+  <rect x="22" y="22" width="256" height="406" fill="none" stroke="#fffaf055" stroke-width="2"/>
+  <text x="150" y="235" text-anchor="middle" font-family="Consolas, monospace" font-size="110" font-weight="700" fill="#f7df1e">{ }</text>
+  <text x="150" y="345" text-anchor="middle" font-family="Georgia, serif" font-size="26" font-weight="700" fill="#fffaf0">JAVASCRIPT</text><text x="150" y="375" text-anchor="middle" font-family="Georgia, serif" font-size="26" font-weight="700" fill="#fffaf0">ELOCUENTE</text>
+  <text x="150" y="423" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" letter-spacing="1" fill="#fffaf0cc">Marijn Haverbeke</text>
+</svg>

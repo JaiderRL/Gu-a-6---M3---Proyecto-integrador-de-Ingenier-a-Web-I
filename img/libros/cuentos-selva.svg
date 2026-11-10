@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 450" role="img" aria-label="Portada de Cuentos de la selva">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f6b3a"/><stop offset="1" stop-color="#2f6b3a" stop-opacity=".78"/></linearGradient></defs>
+  <rect width="300" height="450" fill="#0d1b1a"/>
+  <rect width="300" height="450" fill="url(#g)"/>
+  <rect x="0" y="0" width="14" height="450" fill="#00000033"/>
+  <rect x="22" y="22" width="256" height="406" fill="none" stroke="#fffaf055" stroke-width="2"/>
+  <path d="M150 110c70 30 80 120 0 190c-80-70-70-160 0-190z" fill="#f4a259" opacity=".9"/><path d="M150 120v175" stroke="#00000033" stroke-width="4"/>
+  <text x="150" y="345" text-anchor="middle" font-family="Georgia, serif" font-size="26" font-weight="700" fill="#fffaf0">CUENTOS DE LA</text><text x="150" y="375" text-anchor="middle" font-family="Georgia, serif" font-size="26" font-weight="700" fill="#fffaf0">SELVA</text>
+  <text x="150" y="423" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" letter-spacing="1" fill="#fffaf0cc">Horacio Quiroga</text>
+</svg>
