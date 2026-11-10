@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Agenda cultural de Lumen: clubes de lectura, hora del cuento, talleres y galería de espacios.">
+  <title>Eventos | Lumen Biblioteca Virtual</title>
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- ================= ENCABEZADO ================= -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="Lumen, ir al inicio">
+        <img src="img/logo.svg" alt="" width="40" height="40">
+        <span>
+          <span class="brand__name">Lumen</span>
+          <span class="brand__tag">Biblioteca virtual comunitaria</span>
+        </span>
+      </a>
+      <nav class="main-nav" id="menu-principal" aria-label="Menú principal">
+        <ul class="main-nav__list">
+          <li><a class="main-nav__link" href="index.html">Inicio</a></li>
+          <li><a class="main-nav__link" href="catalogo.html">Catálogo</a></li>
+          <li><a class="main-nav__link" href="eventos.html" aria-current="page">Eventos</a></li>
+          <li><a class="main-nav__link" href="reservas.html">Reservas y contacto</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn theme-toggle" type="button" aria-label="Activar tema oscuro" title="Cambiar tema">☾</button>
+        <button class="icon-btn nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú">
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Ruta de navegación">
+          <ol>
+            <li><a href="index.html">Inicio</a></li>
+            <li aria-current="page">Eventos</li>
+          </ol>
+        </nav>
+        <h1>Agenda cultural</h1>
+        <p>Actividades gratuitas para todas las edades. Guarda las que te interesen y las verás resaltadas cada vez que vuelvas.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="eventos-titulo">
+      <div class="container">
+        <header class="section__head">
+          <span class="eyebrow">Noviembre</span>
+          <h2 id="eventos-titulo">Próximos eventos</h2>
+        </header>
+        <div class="filters__row" role="group" aria-label="Filtrar por público" style="margin-bottom:1.5rem">
+          <button class="chip" type="button" data-audience="todos" aria-pressed="true">Todos</button>
+          <button class="chip" type="button" data-audience="ninos" aria-pressed="false">Niños</button>
+          <button class="chip" type="button" data-audience="jovenes" aria-pressed="false">Jóvenes</button>
+          <button class="chip" type="button" data-audience="adultos" aria-pressed="false">Adultos</button>
+        </div>
+        <p class="results-info" id="agenda-info" aria-live="polite">Tienes 0 eventos guardados en tu agenda.</p>
+        <div class="grid" id="lista-eventos">
+          <article class="card event-card reveal" data-audience="adultos" data-id="club-lectura">
+            <img class="event-card__img" src="img/eventos/club-lectura.svg" alt="Ilustración del evento Club de lectura: realismo mágico" width="800" height="500" loading="lazy">
+            <div class="card__body">
+              <span class="event-card__date"><time>Sáb 21 nov · 10:00 a. m.</time></span>
+              <h3>Club de lectura: realismo mágico</h3>
+              <p>Conversamos sobre «Cien años de soledad». Trae tus apuntes o solo las ganas de escuchar.</p>
+              <p class="book-card__meta">📍 Sala de lectura · 👥 Adultos</p>
+              <div class="card__footer">
+                <button class="btn btn--dark btn--small js-save-event" type="button" aria-pressed="false">Guardar en mi agenda</button>
+              </div>
+            </div>
+          </article>
+          <article class="card event-card reveal" data-audience="ninos" data-id="hora-cuento">
+            <img class="event-card__img" src="img/eventos/hora-cuento.svg" alt="Ilustración del evento Hora del cuento" width="800" height="500" loading="lazy">
+            <div class="card__body">
+              <span class="event-card__date"><time>Sáb 21 nov · 3:00 p. m.</time></span>
+              <h3>Hora del cuento</h3>
+              <p>Lectura en voz alta y manualidades para niñas y niños de 4 a 9 años, con su acudiente.</p>
+              <p class="book-card__meta">📍 Zona infantil · 👥 Niños</p>
+              <div class="card__footer">
+                <button class="btn btn--dark btn--small js-save-event" type="button" aria-pressed="false">Guardar en mi agenda</button>
+              </div>
+            </div>
+          </article>
+          <article class="card event-card reveal" data-audience="jovenes" data-id="taller-escritura">
+            <img class="event-card__img" src="img/eventos/taller-escritura.svg" alt="Ilustración del evento Taller de escritura creativa" width="800" height="500" loading="lazy">
+            <div class="card__body">
+              <span class="event-card__date"><time>Mié 25 nov · 5:00 p. m.</time></span>
+              <h3>Taller de escritura creativa</h3>
+              <p>Cuatro sesiones para escribir tu primer cuento corto, guiadas por un autor local.</p>
+              <p class="book-card__meta">📍 Aula 2 · 👥 Jóvenes</p>
+              <div class="card__footer">
+                <button class="btn btn--dark btn--small js-save-event" type="button" aria-pressed="false">Guardar en mi agenda</button>
+              </div>
+            </div>
+          </article>
+          <article class="card event-card reveal" data-audience="adultos" data-id="charla-tecnologia">
+            <img class="event-card__img" src="img/eventos/charla-tecnologia.svg" alt="Ilustración del evento Alfabetización digital" width="800" height="500" loading="lazy">
+            <div class="card__body">
+              <span class="event-card__date"><time>Jue 26 nov · 9:00 a. m.</time></span>
+              <h3>Alfabetización digital</h3>
+              <p>Aprende a usar el correo, hacer videollamadas y realizar trámites en línea de forma segura.</p>
+              <p class="book-card__meta">📍 Sala de cómputo · 👥 Adultos</p>
+              <div class="card__footer">
+                <button class="btn btn--dark btn--small js-save-event" type="button" aria-pressed="false">Guardar en mi agenda</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" aria-labelledby="galeria-titulo">
+      <div class="container">
+        <header class="section__head">
+          <span class="eyebrow">Conoce la biblioteca</span>
+          <h2 id="galeria-titulo">Galería de espacios</h2>
+          <p>Toca una imagen para verla en grande y recorrer la galería.</p>
+        </header>
+        <div class="gallery">
+          <button class="gallery__item" type="button" data-index="0" data-src="img/galeria/sala-lectura.svg" data-caption="Sala de lectura principal">
+            <img src="img/galeria/sala-lectura.svg" alt="Sala de lectura principal" width="800" height="500" loading="lazy">
+            <span>Sala de lectura principal</span>
+          </button>
+          <button class="gallery__item" type="button" data-index="1" data-src="img/galeria/zona-infantil.svg" data-caption="Zona infantil">
+            <img src="img/galeria/zona-infantil.svg" alt="Zona infantil" width="800" height="500" loading="lazy">
+            <span>Zona infantil</span>
+          </button>
+          <button class="gallery__item" type="button" data-index="2" data-src="img/galeria/sala-computo.svg" data-caption="Sala de cómputo">
+            <img src="img/galeria/sala-computo.svg" alt="Sala de cómputo" width="800" height="500" loading="lazy">
+            <span>Sala de cómputo</span>
+          </button>
+          <button class="gallery__item" type="button" data-index="3" data-src="img/galeria/auditorio.svg" data-caption="Auditorio">
+            <img src="img/galeria/auditorio.svg" alt="Auditorio" width="800" height="500" loading="lazy">
+            <span>Auditorio</span>
+          </button>
+          <button class="gallery__item" type="button" data-index="4" data-src="img/galeria/terraza.svg" data-caption="Terraza de lectura">
+            <img src="img/galeria/terraza.svg" alt="Terraza de lectura" width="800" height="500" loading="lazy">
+            <span>Terraza de lectura</span>
+          </button>
+          <button class="gallery__item" type="button" data-index="5" data-src="img/galeria/hemeroteca.svg" data-caption="Hemeroteca">
+            <img src="img/galeria/hemeroteca.svg" alt="Hemeroteca" width="800" height="500" loading="lazy">
+            <span>Hemeroteca</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="video-titulo">
+      <div class="container two-col">
+        <div>
+          <span class="eyebrow">Multimedia</span>
+          <h2 id="video-titulo">Recorrido virtual</h2>
+          <p>Mira un recorrido corto por los espacios de la biblioteca antes de tu primera visita: sala de lectura, zona infantil, sala de cómputo, auditorio, terraza y hemeroteca.</p>
+          <a class="btn btn--primary" href="reservas.html">Inscribirme como lector</a>
+        </div>
+        <figure>
+          <video class="video" controls muted playsinline preload="metadata" poster="media/poster.jpg" width="960" height="600">
+            <source src="media/recorrido.mp4" type="video/mp4">
+            Tu navegador no soporta la reproducción de video. <a href="media/recorrido.mp4">Descarga el recorrido</a>.
+          </video>
+          <figcaption class="book-card__meta">Recorrido por los espacios de Lumen (20 segundos, sin audio).</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Visor de imágenes (lightbox) -->
+    <dialog class="modal lightbox" id="lightbox" aria-label="Visor de imágenes">
+      <button class="icon-btn modal__close" type="button" data-close aria-label="Cerrar visor">✕</button>
+      <figure class="modal__content" style="grid-template-columns:1fr;margin:0">
+        <img id="lightbox-img" src="img/galeria/sala-lectura.svg" alt="" width="800" height="500">
+        <figcaption id="lightbox-caption"></figcaption>
+        <div class="lightbox__nav">
+          <button class="btn btn--ghost btn--small" type="button" id="lightbox-prev">← Anterior</button>
+          <button class="btn btn--ghost btn--small" type="button" id="lightbox-next">Siguiente →</button>
+        </div>
+      </figure>
+    </dialog>
+  </main>
+
+</main>
+
+  <!-- ================= PIE DE PÁGINA ================= -->
+  <footer class="site-footer">
+    <div class="container footer__grid">
+      <section>
+        <h2>Lumen · Biblioteca Virtual Comunitaria</h2>
+        <p>Proyecto integrador de Ingeniería Web I. Interfaz desarrollada con HTML5, CSS3 y JavaScript.</p>
+      </section>
+      <nav aria-label="Enlaces del pie de página">
+        <h2>Navegación</h2>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="catalogo.html">Catálogo</a></li>
+          <li><a href="eventos.html">Eventos</a></li>
+          <li><a href="reservas.html">Reservas y contacto</a></li>
+        </ul>
+      </nav>
+      <section>
+        <h2>Horario</h2>
+        <ul>
+          <li>Lun a vie: 8:00 a 19:00</li>
+          <li>Sábado: 9:00 a 14:00</li>
+          <li>Domingo: cerrado</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Contacto</h2>
+        <address>
+          <ul>
+            <li>Calle 10 # 5-23, Centro</li>
+            <li><a href="tel:+576020000000">(602) 000 0000</a></li>
+            <li><a href="mailto:contacto@lumen-biblioteca.org">contacto@lumen-biblioteca.org</a></li>
+          </ul>
+        </address>
+      </section>
+    </div>
+    <p class="footer__bottom container">© <span class="js-year">2026</span> Lumen. Sitio académico sin fines comerciales.</p>
+  </footer>
+
+  <a class="btn btn--primary back-to-top" href="#contenido" aria-label="Volver arriba">↑</a>
+</body>
+</html>

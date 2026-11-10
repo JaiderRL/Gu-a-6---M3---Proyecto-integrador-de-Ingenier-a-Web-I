@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Catálogo de libros de Lumen: busca por título, autor o categoría y consulta su disponibilidad.">
+  <title>Catálogo | Lumen Biblioteca Virtual</title>
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- ================= ENCABEZADO ================= -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="Lumen, ir al inicio">
+        <img src="img/logo.svg" alt="" width="40" height="40">
+        <span>
+          <span class="brand__name">Lumen</span>
+          <span class="brand__tag">Biblioteca virtual comunitaria</span>
+        </span>
+      </a>
+      <nav class="main-nav" id="menu-principal" aria-label="Menú principal">
+        <ul class="main-nav__list">
+          <li><a class="main-nav__link" href="index.html">Inicio</a></li>
+          <li><a class="main-nav__link" href="catalogo.html" aria-current="page">Catálogo</a></li>
+          <li><a class="main-nav__link" href="eventos.html">Eventos</a></li>
+          <li><a class="main-nav__link" href="reservas.html">Reservas y contacto</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn theme-toggle" type="button" aria-label="Activar tema oscuro" title="Cambiar tema">☾</button>
+        <button class="icon-btn nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú">
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Ruta de navegación">
+          <ol>
+            <li><a href="index.html">Inicio</a></li>
+            <li aria-current="page">Catálogo</li>
+          </ol>
+        </nav>
+        <h1>Catálogo de libros</h1>
+        <p>Filtra por categoría, busca por título o autor y revisa si el ejemplar está disponible para préstamo.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="catalogo-titulo">
+      <div class="container">
+        <h2 id="catalogo-titulo" class="visually-hidden">Resultados del catálogo</h2>
+
+        <form class="filters" id="filtros" role="search" aria-label="Filtros del catálogo">
+          <div class="field">
+            <label for="filtro-texto">Buscar</label>
+            <input id="filtro-texto" type="search" name="q" placeholder="Título o autor…" autocomplete="off">
+          </div>
+          <div class="field">
+            <label for="filtro-disponibilidad">Disponibilidad</label>
+            <select id="filtro-disponibilidad" name="disponibilidad">
+              <option value="todos">Todos</option>
+              <option value="true">Disponibles</option>
+              <option value="false">Prestados</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="filtro-orden">Ordenar por</label>
+            <select id="filtro-orden" name="orden">
+              <option value="title">Título (A-Z)</option>
+              <option value="author">Autor (A-Z)</option>
+              <option value="year-desc">Más recientes</option>
+              <option value="year-asc">Más antiguos</option>
+            </select>
+          </div>
+          <div class="filters__row filters__row--chips" role="group" aria-label="Categorías">
+            <button class="chip" type="button" data-category="todas" aria-pressed="true">Todas</button>
+            <button class="chip" type="button" data-category="literatura" aria-pressed="false">Literatura</button>
+            <button class="chip" type="button" data-category="ciencia" aria-pressed="false">Ciencia</button>
+            <button class="chip" type="button" data-category="historia" aria-pressed="false">Historia</button>
+            <button class="chip" type="button" data-category="tecnologia" aria-pressed="false">Tecnología</button>
+            <button class="chip" type="button" data-category="infantil" aria-pressed="false">Infantil</button>
+          </div>
+        </form>
+
+        <p class="results-info" id="resultados" aria-live="polite">Mostrando 12 libros</p>
+
+        <div class="grid grid--books" id="lista-libros">
+          <article class="card book-card" data-title="Cien años de soledad" data-author="Gabriel García Márquez" data-category="literatura" data-year="1967" data-pages="471" data-available="true" data-description="La saga de siete generaciones de la familia Buendía en el pueblo de Macondo, obra cumbre del realismo mágico." data-cover="img/libros/cien-anos.svg">
+            <div class="book-card__cover">
+              <img src="img/libros/cien-anos.svg" alt="Portada de Cien años de soledad" width="300" height="450" loading="lazy">
+              <span class="badge badge--ok">Disponible</span>
+            </div>
+            <div class="card__body">
+              <h3>Cien años de soledad</h3>
+              <p class="book-card__meta">Gabriel García Márquez · Literatura · 1967</p>
+              <div class="card__footer">
+                <button class="btn btn--ghost btn--small js-detail" type="button">Ver detalle</button>
+                <a class="btn btn--dark btn--small" href="reservas.html?libro=Cien%20a%C3%B1os%20de%20soledad">Reservar</a>
+              </div>
+            </div>
+          </article>
+          <article class="card book-card" data-title="María" data-author="Jorge Isaacs" data-category="literatura" data-year="1867" data-pages="352" data-available="true" data-description="Novela romántica ambientada en las haciendas del Valle del Cauca, clásico de la literatura colombiana." data-cover="img/libros/maria.svg">
+            <div class="book-card__cover">
+              <img src="img/libros/maria.svg" alt="Portada de María" width="300" height="450" loading="lazy">
+              <span class="badge badge--ok">Disponible</span>
+            </div>
+            <div class="card__body">
+              <h3>María</h3>
+              <p class="book-card__meta">Jorge Isaacs · Literatura · 1867</p>
+              <div class="card__footer">
+                <button class="btn btn--ghost btn--small js-detail" type="button">Ver detalle</button>
+                <a class="btn btn--dark btn--small" href="reservas.html?libro=Mar%C3%ADa">Reservar</a>
+              </div>
+            </div>
+          </article>
+          <article class="card book-card" data-title="La vorágine" data-author="José Eustasio Rivera" data-category="literatura" data-year="1924" data-pages="320" data-available="false" data-description="Arturo Cova huye hacia los llanos y la selva, donde descubre la explotación de los caucheros." data-cover="img/libros/la-voragine.svg">
+            <div class="book-card__cover">
+              <img src="img/libros/la-voragine.svg" alt="Portada de La vorágine" width="300" height="450" loading="lazy">
+              <span class="badge badge--wait">Prestado</span>
+            </div>
+            <div class="card__body">
+              <h3>La vorágine</h3>
+              <p class="book-card__meta">José Eustasio Rivera · Literatura · 1924</p>
+              <div class="card__footer">
+                <button class="btn btn--ghost btn--small js-detail" type="button">Ver detalle</button>
+                <button class="btn btn--dark btn--small js-notify" type="button" aria-pressed="false">Avisarme</button>
+              </div>
+            </div>
+          </article>
+          <article class="card book-card" data-title="Don Quijote de la Mancha" data-author="Miguel de Cervantes" data-category="literatura" data-year="1605" data-pages="1056" data-available="true" data-description="Las aventuras del hidalgo que, tras leer demasiados libros de caballería, decide hacerse caballero andante." data-cover="img/libros/quijote.svg">
+            <div class="book-card__cover">
+              <img src="img/libros/quijote.svg" alt="Portada de Don Quijote de la Mancha" width="300" height="450" loading="lazy">
+              <span class="badge badge--ok">Disponible</span>
+            </div>
+            <div class="card__body">
+              <h3>Don Quijote de la Mancha</h3>
+              <p class="book-card__meta">Miguel de Cervantes · Literatura · 1605</p>
+              <div class="card__footer">
+                <button class="btn btn--ghost btn--small js-detail" type="button">Ver detalle</button>
+                <a class="btn btn--dark btn--small" href="reservas.html?libro=Don%20Quijote%20de%20la%20Mancha">Reservar</a>
+              </div>
+            </div>
+          </article>
+          <article class="card book-card" data-title="El principito" data-author="Antoine de Saint-Exupéry" data-category="infantil" data-year="1943" data-pages="96" data-available="false" data-description="Un aviador perdido en el desierto conoce a un pequeño príncipe venido de otro planeta." data-cover="img/libros/principito.svg">
+            <div class="book-card__cover">
+              <img src="img/libros/principito.svg" alt="Portada de El principito" width="300" height="450" loading="lazy">
+              <span class="badge badge--wait">Prestado</span>
+            </div>
+            <div class="card__body">
+              <h3>El principito</h3>
+              <p class="book-card__meta">Antoine de Saint-Exupéry · Infantil · 1943</p>
+              <div class="card__footer">
+                <button class="btn btn--ghost btn--small js-detail" type="button">Ver detalle</button>
+                <button class="btn btn--dark btn--small js-notify" type="button" aria-pressed="false">Avisarme</button>
+              </div>
+            </div>
+          </article>
+          <article class="card book-card" data-title="Orgullo y prejuicio" data-author="Jane Austen" data-category="literatura" data-year="1813" data-pages="432" data-available="true" data-description="Elizabeth Bennet y el señor Darcy aprenden a mirar más allá de las primeras impresiones." data-cover="img/libros/orgullo.svg">
+            <div class="book-card__cover">
+              <img src="img/libros/orgullo.svg" alt="Portada de Orgullo y prejuicio" width="300" height="450" loading="lazy">
+              <span class="badge badge--ok">Disponible</span>
+            </div>
+            <div class="card__body">
+              <h3>Orgullo y prejuicio</h3>
+              <p class="book-card__meta">Jane Austen · Literatura · 1813</p>
+              <div class="card__footer">
+                <button class="btn btn--ghost btn--small js-detail" type="button">Ver detalle</button>
+                <a class="btn btn--dark btn--small" href="reservas.html?libro=Orgullo%20y%20prejuicio">Reservar</a>
+              </div>
+            </div>
+          </article>
+          <article class="card book-card" data-title="Cosmos" data-author="Carl Sagan" data-category="ciencia" data-year="1980" data-pages="384" data-available="true" data-description="Un recorrido por la historia del universo y del conocimiento científico, escrito para todo público." data-cover="img/libros/cosmos.svg">
+            <div class="book-card__cover">
+              <img src="img/libros/cosmos.svg" alt="Portada de Cosmos" width="300" height="450" loading="lazy">
+              <span class="badge badge--ok">Disponible</span>
+            </div>
+            <div class="card__body">
+              <h3>Cosmos</h3>
+              <p class="book-card__meta">Carl Sagan · Ciencia · 1980</p>
+              <div class="card__footer">
+                <button class="btn btn--ghost btn--small js-detail" type="button">Ver detalle</button>
+                <a class="btn btn--dark btn--small" href="reservas.html?libro=Cosmos">Reservar</a>
+              </div>
+            </div>
+          </article>
+          <article class="card book-card" data-title="Breve historia del tiempo" data-author="Stephen Hawking" data-category="ciencia" data-year="1988" data-pages="256" data-available="false" data-description="Agujeros negros, el big bang y la naturaleza del tiempo explicados sin fórmulas complicadas." data-cover="img/libros/breve-historia.svg">
+            <div class="book-card__cover">
+              <img src="img/libros/breve-historia.svg" alt="Portada de Breve historia del tiempo" width="300" height="450" loading="lazy">
+              <span class="badge badge--wait">Prestado</span>
+            </div>
+            <div class="card__body">
+              <h3>Breve historia del tiempo</h3>
+              <p class="book-card__meta">Stephen Hawking · Ciencia · 1988</p>
+              <div class="card__footer">
+                <button class="btn btn--ghost btn--small js-detail" type="button">Ver detalle</button>
+                <button class="btn btn--dark btn--small js-notify" type="button" aria-pressed="false">Avisarme</button>
+              </div>
+            </div>
+          </article>
+          <article class="card book-card" data-title="Sapiens" data-author="Yuval Noah Harari" data-category="historia" data-year="2011" data-pages="496" data-available="true" data-description="Cómo una especie de simio llegó a dominar el planeta: revoluciones cognitiva, agrícola y científica." data-cover="img/libros/sapiens.svg">
+            <div class="book-card__cover">
+              <img src="img/libros/sapiens.svg" alt="Portada de Sapiens" width="300" height="450" loading="lazy">
+              <span class="badge badge--ok">Disponible</span>
+            </div>
+            <div class="card__body">
+              <h3>Sapiens</h3>
+              <p class="book-card__meta">Yuval Noah Harari · Historia · 2011</p>
+              <div class="card__footer">
+                <button class="btn btn--ghost btn--small js-detail" type="button">Ver detalle</button>
+                <a class="btn btn--dark btn--small" href="reservas.html?libro=Sapiens">Reservar</a>
+              </div>
+            </div>
+          </article>
+          <article class="card book-card" data-title="Código limpio" data-author="Robert C. Martin" data-category="tecnologia" data-year="2008" data-pages="464" data-available="true" data-description="Buenas prácticas para escribir software legible y fácil de mantener." data-cover="img/libros/clean-code.svg">
+            <div class="book-card__cover">
+              <img src="img/libros/clean-code.svg" alt="Portada de Código limpio" width="300" height="450" loading="lazy">
+              <span class="badge badge--ok">Disponible</span>
+            </div>
+            <div class="card__body">
+              <h3>Código limpio</h3>
+              <p class="book-card__meta">Robert C. Martin · Tecnología · 2008</p>
+              <div class="card__footer">
+                <button class="btn btn--ghost btn--small js-detail" type="button">Ver detalle</button>
+                <a class="btn btn--dark btn--small" href="reservas.html?libro=C%C3%B3digo%20limpio">Reservar</a>
+              </div>
+            </div>
+          </article>
+          <article class="card book-card" data-title="JavaScript elocuente" data-author="Marijn Haverbeke" data-category="tecnologia" data-year="2011" data-pages="472" data-available="true" data-description="Introducción moderna a la programación usando JavaScript, con ejercicios prácticos." data-cover="img/libros/eloquent-js.svg">
+            <div class="book-card__cover">
+              <img src="img/libros/eloquent-js.svg" alt="Portada de JavaScript elocuente" width="300" height="450" loading="lazy">
+              <span class="badge badge--ok">Disponible</span>
+            </div>
+            <div class="card__body">
+              <h3>JavaScript elocuente</h3>
+              <p class="book-card__meta">Marijn Haverbeke · Tecnología · 2011</p>
+              <div class="card__footer">
+                <button class="btn btn--ghost btn--small js-detail" type="button">Ver detalle</button>
+                <a class="btn btn--dark btn--small" href="reservas.html?libro=JavaScript%20elocuente">Reservar</a>
+              </div>
+            </div>
+          </article>
+          <article class="card book-card" data-title="Cuentos de la selva" data-author="Horacio Quiroga" data-category="infantil" data-year="1918" data-pages="128" data-available="true" data-description="Relatos protagonizados por animales de la selva misionera, ideales para leer en familia." data-cover="img/libros/cuentos-selva.svg">
+            <div class="book-card__cover">
+              <img src="img/libros/cuentos-selva.svg" alt="Portada de Cuentos de la selva" width="300" height="450" loading="lazy">
+              <span class="badge badge--ok">Disponible</span>
+            </div>
+            <div class="card__body">
+              <h3>Cuentos de la selva</h3>
+              <p class="book-card__meta">Horacio Quiroga · Infantil · 1918</p>
+              <div class="card__footer">
+                <button class="btn btn--ghost btn--small js-detail" type="button">Ver detalle</button>
+                <a class="btn btn--dark btn--small" href="reservas.html?libro=Cuentos%20de%20la%20selva">Reservar</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="empty-state" id="sin-resultados" hidden>
+          <p><strong>No encontramos libros con esos filtros.</strong></p>
+          <p>Prueba con otra palabra o <button class="btn btn--ghost btn--small" type="button" id="limpiar-filtros">limpia los filtros</button></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ventana modal con el detalle del libro -->
+    <dialog class="modal" id="modal-libro" aria-labelledby="modal-titulo">
+      <button class="icon-btn modal__close" type="button" data-close aria-label="Cerrar detalle">✕</button>
+      <div class="modal__content">
+        <img id="modal-portada" src="img/libros/cien-anos.svg" alt="" width="300" height="450">
+        <div>
+          <span class="badge" id="modal-estado">Disponible</span>
+          <h2 id="modal-titulo">Título</h2>
+          <p id="modal-descripcion"></p>
+          <dl>
+            <dt>Autor</dt><dd id="modal-autor"></dd>
+            <dt>Categoría</dt><dd id="modal-categoria"></dd>
+            <dt>Año</dt><dd id="modal-anio"></dd>
+            <dt>Páginas</dt><dd id="modal-paginas"></dd>
+          </dl>
+          <a class="btn btn--primary" id="modal-reservar" href="reservas.html">Reservar este libro</a>
+        </div>
+      </div>
+    </dialog>
+  </main>
+
+</main>
+
+  <!-- ================= PIE DE PÁGINA ================= -->
+  <footer class="site-footer">
+    <div class="container footer__grid">
+      <section>
+        <h2>Lumen · Biblioteca Virtual Comunitaria</h2>
+        <p>Proyecto integrador de Ingeniería Web I. Interfaz desarrollada con HTML5, CSS3 y JavaScript.</p>
+      </section>
+      <nav aria-label="Enlaces del pie de página">
+        <h2>Navegación</h2>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="catalogo.html">Catálogo</a></li>
+          <li><a href="eventos.html">Eventos</a></li>
+          <li><a href="reservas.html">Reservas y contacto</a></li>
+        </ul>
+      </nav>
+      <section>
+        <h2>Horario</h2>
+        <ul>
+          <li>Lun a vie: 8:00 a 19:00</li>
+          <li>Sábado: 9:00 a 14:00</li>
+          <li>Domingo: cerrado</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Contacto</h2>
+        <address>
+          <ul>
+            <li>Calle 10 # 5-23, Centro</li>
+            <li><a href="tel:+576020000000">(602) 000 0000</a></li>
+            <li><a href="mailto:contacto@lumen-biblioteca.org">contacto@lumen-biblioteca.org</a></li>
+          </ul>
+        </address>
+      </section>
+    </div>
+    <p class="footer__bottom container">© <span class="js-year">2026</span> Lumen. Sitio académico sin fines comerciales.</p>
+  </footer>
+
+  <a class="btn btn--primary back-to-top" href="#contenido" aria-label="Volver arriba">↑</a>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Reserva un libro de Lumen en línea, consulta horarios y datos de contacto de la biblioteca.">
+  <title>Reservas y contacto | Lumen Biblioteca Virtual</title>
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <!-- ================= ENCABEZADO ================= -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="Lumen, ir al inicio">
+        <img src="img/logo.svg" alt="" width="40" height="40">
+        <span>
+          <span class="brand__name">Lumen</span>
+          <span class="brand__tag">Biblioteca virtual comunitaria</span>
+        </span>
+      </a>
+      <nav class="main-nav" id="menu-principal" aria-label="Menú principal">
+        <ul class="main-nav__list">
+          <li><a class="main-nav__link" href="index.html">Inicio</a></li>
+          <li><a class="main-nav__link" href="catalogo.html">Catálogo</a></li>
+          <li><a class="main-nav__link" href="eventos.html">Eventos</a></li>
+          <li><a class="main-nav__link" href="reservas.html" aria-current="page">Reservas y contacto</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn theme-toggle" type="button" aria-label="Activar tema oscuro" title="Cambiar tema">☾</button>
+        <button class="icon-btn nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" aria-label="Abrir menú">
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="page-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Ruta de navegación">
+          <ol>
+            <li><a href="index.html">Inicio</a></li>
+            <li aria-current="page">Reservas y contacto</li>
+          </ol>
+        </nav>
+        <h1>Reserva tu libro</h1>
+        <p>Completa el formulario y recoge el libro en el mostrador principal. Lo guardamos durante 48 horas desde la fecha que elijas.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="form-titulo">
+      <div class="container two-col">
+        <div>
+          <h2 id="form-titulo" class="visually-hidden">Formulario de reserva</h2>
+          <div class="alert alert--ok" id="reserva-ok" role="status" hidden></div>
+          <form class="form" id="form-reserva" novalidate>
+            <fieldset>
+              <legend>Datos del lector</legend>
+              <div class="field">
+                <label for="nombre">Nombre completo *</label>
+                <input id="nombre" name="nombre" type="text" autocomplete="name" required minlength="3">
+                <span class="field__error" aria-live="polite"></span>
+              </div>
+              <div class="form__row">
+                <div class="field">
+                  <label for="documento">Documento de identidad *</label>
+                  <input id="documento" name="documento" type="text" inputmode="numeric" required pattern="[0-9]{6,10}">
+                  <span class="field__hint">Solo números, entre 6 y 10 dígitos.</span>
+                  <span class="field__error" aria-live="polite"></span>
+                </div>
+                <div class="field">
+                  <label for="telefono">Celular *</label>
+                  <input id="telefono" name="telefono" type="tel" autocomplete="tel" required pattern="3[0-9]{9}" placeholder="3001234567">
+                  <span class="field__error" aria-live="polite"></span>
+                </div>
+              </div>
+              <div class="field">
+                <label for="correo">Correo electrónico *</label>
+                <input id="correo" name="correo" type="email" autocomplete="email" required>
+                <span class="field__error" aria-live="polite"></span>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Detalle de la reserva</legend>
+              <div class="field">
+                <label for="libro">Libro *</label>
+                <select id="libro" name="libro" required>
+                  <option value="">Selecciona un libro disponible</option>
+                  <option value="Cien años de soledad">Cien años de soledad — Gabriel García Márquez</option>
+                  <option value="María">María — Jorge Isaacs</option>
+                  <option value="Don Quijote de la Mancha">Don Quijote de la Mancha — Miguel de Cervantes</option>
+                  <option value="Orgullo y prejuicio">Orgullo y prejuicio — Jane Austen</option>
+                  <option value="Cosmos">Cosmos — Carl Sagan</option>
+                  <option value="Sapiens">Sapiens — Yuval Noah Harari</option>
+                  <option value="Código limpio">Código limpio — Robert C. Martin</option>
+                  <option value="JavaScript elocuente">JavaScript elocuente — Marijn Haverbeke</option>
+                  <option value="Cuentos de la selva">Cuentos de la selva — Horacio Quiroga</option>
+                </select>
+                <span class="field__error" aria-live="polite"></span>
+              </div>
+              <div class="form__row">
+                <div class="field">
+                  <label for="fecha">Fecha de recogida *</label>
+                  <input id="fecha" name="fecha" type="date" required>
+                  <span class="field__error" aria-live="polite"></span>
+                </div>
+                <div class="field">
+                  <label for="jornada">Jornada</label>
+                  <select id="jornada" name="jornada">
+                    <option>Mañana</option>
+                    <option>Tarde</option>
+                  </select>
+                </div>
+              </div>
+              <div class="field">
+                <label for="comentario">Comentario (opcional)</label>
+                <textarea id="comentario" name="comentario" maxlength="200" placeholder="¿Algo que debamos saber?"></textarea>
+                <span class="field__hint"><span id="contador">0</span>/200 caracteres</span>
+              </div>
+              <div class="field">
+                <label class="check">
+                  <input type="checkbox" id="acepto" name="acepto" required>
+                  <span>Acepto el reglamento de préstamo y el tratamiento de mis datos para gestionar la reserva. *</span>
+                </label>
+                <span class="field__error" aria-live="polite"></span>
+              </div>
+            </fieldset>
+            <button class="btn btn--primary" type="submit">Confirmar reserva</button>
+          </form>
+        </div>
+
+        <aside aria-labelledby="mis-reservas-titulo">
+          <h2 id="mis-reservas-titulo">Mis reservas</h2>
+          <p class="book-card__meta">Se guardan en este navegador para que puedas consultarlas o cancelarlas.</p>
+          <ul class="reservations" id="lista-reservas"></ul>
+          <p class="empty-state" id="sin-reservas">Aún no tienes reservas.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section section--alt" aria-labelledby="contacto-titulo">
+      <div class="container two-col">
+        <div>
+          <h2 id="contacto-titulo">Horarios y contacto</h2>
+          <table class="schedule" id="horario">
+            <caption>Horario de atención (el día de hoy aparece resaltado)</caption>
+            <thead>
+              <tr><th scope="col">Día</th><th scope="col">Horario</th></tr>
+            </thead>
+            <tbody>
+              <tr data-day="1"><th scope="row">Lunes</th><td>8:00 a. m. – 7:00 p. m.</td></tr>
+              <tr data-day="2"><th scope="row">Martes</th><td>8:00 a. m. – 7:00 p. m.</td></tr>
+              <tr data-day="3"><th scope="row">Miércoles</th><td>8:00 a. m. – 7:00 p. m.</td></tr>
+              <tr data-day="4"><th scope="row">Jueves</th><td>8:00 a. m. – 7:00 p. m.</td></tr>
+              <tr data-day="5"><th scope="row">Viernes</th><td>8:00 a. m. – 7:00 p. m.</td></tr>
+              <tr data-day="6"><th scope="row">Sábado</th><td>9:00 a. m. – 2:00 p. m.</td></tr>
+              <tr data-day="0"><th scope="row">Domingo</th><td>Cerrado</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h3>¿Dónde estamos?</h3>
+          <ul class="contact-list">
+            <li><span aria-hidden="true">📍</span><span>Calle 10 # 5-23, Centro. Frente al parque principal.</span></li>
+            <li><span aria-hidden="true">📞</span><a href="tel:+576020000000">(602) 000 0000</a></li>
+            <li><span aria-hidden="true">✉️</span><a href="mailto:contacto@lumen-biblioteca.org">contacto@lumen-biblioteca.org</a></li>
+          </ul>
+          <figure class="map" style="margin:1.25rem 0 0">
+            <img src="img/mapa.svg" alt="Mapa de ubicación de la biblioteca en el centro, frente al parque principal" width="800" height="450" loading="lazy">
+          </figure>
+        </div>
+      </div>
+    </section>
+  </main>
+
+</main>
+
+  <!-- ================= PIE DE PÁGINA ================= -->
+  <footer class="site-footer">
+    <div class="container footer__grid">
+      <section>
+        <h2>Lumen · Biblioteca Virtual Comunitaria</h2>
+        <p>Proyecto integrador de Ingeniería Web I. Interfaz desarrollada con HTML5, CSS3 y JavaScript.</p>
+      </section>
+      <nav aria-label="Enlaces del pie de página">
+        <h2>Navegación</h2>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="catalogo.html">Catálogo</a></li>
+          <li><a href="eventos.html">Eventos</a></li>
+          <li><a href="reservas.html">Reservas y contacto</a></li>
+        </ul>
+      </nav>
+      <section>
+        <h2>Horario</h2>
+        <ul>
+          <li>Lun a vie: 8:00 a 19:00</li>
+          <li>Sábado: 9:00 a 14:00</li>
+          <li>Domingo: cerrado</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Contacto</h2>
+        <address>
+          <ul>
+            <li>Calle 10 # 5-23, Centro</li>
+            <li><a href="tel:+576020000000">(602) 000 0000</a></li>
+            <li><a href="mailto:contacto@lumen-biblioteca.org">contacto@lumen-biblioteca.org</a></li>
+          </ul>
+        </address>
+      </section>
+    </div>
+    <p class="footer__bottom container">© <span class="js-year">2026</span> Lumen. Sitio académico sin fines comerciales.</p>
+  </footer>
+
+  <a class="btn btn--primary back-to-top" href="#contenido" aria-label="Volver arriba">↑</a>
+</body>
+</html>
