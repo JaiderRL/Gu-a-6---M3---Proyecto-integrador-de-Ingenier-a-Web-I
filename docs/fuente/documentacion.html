@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Documentación · Lumen, Biblioteca Virtual Comunitaria</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Nunito+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+  <style>
+    @page {
+      size: A4;
+      margin: 2.2cm 2.2cm 2.4cm;
+      @bottom-right { content: counter(page); font-family: "Nunito Sans", Arial, sans-serif; font-size: 9pt; color: #5a6664; }
+      @bottom-left { content: "Proyecto integrador · Ingeniería Web I"; font-family: "Nunito Sans", Arial, sans-serif; font-size: 9pt; color: #5a6664; }
+    }
+    @page :first { margin: 0; @bottom-right { content: none; } @bottom-left { content: none; } }
+
+    :root { --ink: #14403f; --amber: #e8a33d; --brick: #b5462f; --muted: #5a6664; --line: #e2d8c3; --paper: #fbf7ee; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: "Nunito Sans", Arial, sans-serif; font-size: 11pt; line-height: 1.55; color: #1d2423; }
+    h1, h2, h3 { font-family: "Fraunces", Georgia, serif; color: var(--ink); line-height: 1.2; }
+    h2 { font-size: 18pt; margin: 0 0 0.4cm; padding-bottom: 0.15cm; border-bottom: 2px solid var(--amber); break-after: avoid; }
+    h3 { font-size: 13pt; margin: 0.5cm 0 0.2cm; break-after: avoid; }
+    p { margin: 0 0 0.3cm; text-align: justify; }
+    ul, ol { margin: 0 0 0.3cm; padding-left: 0.6cm; }
+    li { margin-bottom: 0.08cm; }
+    code { font-family: Consolas, monospace; font-size: 9.5pt; background: #f3ecdc; padding: 0 3px; border-radius: 3px; }
+    pre { font-family: Consolas, monospace; font-size: 9pt; background: #f3ecdc; padding: 0.3cm; border-radius: 6px; white-space: pre-wrap; break-inside: avoid; margin: 0 0 0.3cm; }
+    a { color: var(--ink); }
+    section { margin-top: 0.8cm; }
+    section.page { break-before: page; margin-top: 0; }
+    section.cont { margin-top: 0.6cm; }
+    h2 { break-after: avoid; }
+    h2 + * { break-before: avoid; }
+
+    table { width: 100%; border-collapse: collapse; margin: 0.2cm 0 0.4cm; font-size: 10pt; break-inside: auto; }
+    th, td { border: 1px solid var(--line); padding: 0.14cm 0.22cm; text-align: left; vertical-align: top; }
+    thead th { background: var(--ink); color: #fff; }
+    tr { break-inside: avoid; }
+    tbody tr:nth-child(even) { background: #faf6ec; }
+
+    figure { margin: 0.3cm 0 0.5cm; break-inside: avoid; text-align: center; }
+    figure img { max-width: 100%; border: 1px solid var(--line); border-radius: 6px; }
+    figcaption { font-size: 9pt; color: var(--muted); margin-top: 0.15cm; }
+    .row { display: flex; gap: 0.5cm; justify-content: center; align-items: flex-start; break-inside: avoid; }
+    .row figure { flex: 1; margin-top: 0; }
+    .h-desk img { max-height: 9.6cm; }
+    .h-tab img { max-height: 10cm; }
+    .h-mob img { max-height: 9cm; }
+
+    /* Portada */
+    .cover { height: 297mm; padding: 3cm 2.5cm 2.5cm; display: flex; flex-direction: column; background: var(--paper); position: relative; overflow: hidden; }
+    .cover::before { content: ""; position: absolute; right: -4cm; top: -4cm; width: 14cm; height: 14cm; border-radius: 50%; background: rgba(232, 163, 61, 0.22); }
+    .cover .logo { width: 2.4cm; position: relative; }
+    .cover .kicker { margin-top: 1.2cm; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brick); font-size: 10pt; }
+    .cover h1 { font-size: 32pt; margin: 0.2cm 0 0.3cm; }
+    .cover .subtitle { font-size: 14pt; color: var(--muted); max-width: 14cm; }
+    .cover .hero { width: 9cm; margin: 0.8cm 0 0 auto; position: relative; }
+    .cover .meta { margin-top: auto; font-size: 11.5pt; border-top: 2px solid var(--ink); padding-top: 0.5cm; }
+    .cover .meta dl { display: grid; grid-template-columns: 4.2cm 1fr; gap: 0.12cm 0.4cm; margin: 0; }
+    .cover .meta dt { font-weight: 800; color: var(--ink); }
+    .cover .meta dd { margin: 0; }
+    .fill { color: #8a4b0b; background: #fbe7d0; padding: 0 4px; border-radius: 3px; }
+
+    .toc ol { list-style: none; padding: 0; columns: 1; }
+    .toc li { display: flex; border-bottom: 1px dotted var(--line); padding: 0.08cm 0; }
+    .toc li span:first-child { width: 0.9cm; color: var(--brick); font-weight: 800; }
+    .box { border-left: 4px solid var(--amber); background: #faf6ec; padding: 0.3cm 0.4cm; margin: 0.3cm 0; break-inside: avoid; }
+    .ok { color: #1f5a37; font-weight: 800; }
+  </style>
+</head>
+<body>
+
+<!-- ============================ PORTADA ============================ -->
+<div class="cover">
+  <img class="logo" src="../../img/logo.svg" alt="">
+  <div class="kicker">Proyecto integrador · Ingeniería Web I</div>
+  <h1>Lumen: Biblioteca Virtual Comunitaria</h1>
+  <p class="subtitle">Documentación técnica de una interfaz web responsiva para consultar el catálogo, reservar libros y conocer la agenda cultural de una biblioteca de barrio.</p>
+  <img class="hero" src="../../img/hero.svg" alt="">
+  <div class="meta">
+    <dl>
+      <dt>Estudiante</dt><dd><span class="fill">[Nombre completo del estudiante]</span></dd>
+      <dt>Documento / código</dt><dd><span class="fill">[Número de documento o código]</span></dd>
+      <dt>Docente</dt><dd><span class="fill">[Nombre del docente]</span></dd>
+      <dt>Institución</dt><dd><span class="fill">[Nombre de la institución]</span></dd>
+      <dt>Grupo / ficha</dt><dd><span class="fill">[Grupo]</span></dd>
+      <dt>Repositorio</dt><dd><a href="https://github.com/JaiderRL/Gu-a-6---M3---Proyecto-integrador-de-Ingenier-a-Web-I">github.com/JaiderRL/Gu-a-6---M3---Proyecto-integrador-de-Ingenier-a-Web-I</a></dd>
+      <dt>Fecha</dt><dd>Noviembre de 2026</dd>
+    </dl>
+  </div>
+</div>
+
+<!-- ============================ ÍNDICE ============================ -->
+<section class="toc page">
+  <h2>Contenido</h2>
+  <ol>
+    <li><span>1.</span><span>Introducción</span></li>
+    <li><span>2.</span><span>Descripción de la problemática</span></li>
+    <li><span>3.</span><span>Justificación del proyecto</span></li>
+    <li><span>4.</span><span>Objetivo general</span></li>
+    <li><span>5.</span><span>Objetivos específicos</span></li>
+    <li><span>6.</span><span>Público objetivo</span></li>
+    <li><span>7.</span><span>Descripción de la solución propuesta</span></li>
+    <li><span>8.</span><span>Arquitectura y estructura de la interfaz</span></li>
+    <li><span>9.</span><span>Tecnologías utilizadas</span></li>
+    <li><span>10.</span><span>Implementación de HTML5</span></li>
+    <li><span>11.</span><span>Implementación de CSS3</span></li>
+    <li><span>12.</span><span>Diseño responsivo</span></li>
+    <li><span>13.</span><span>Funcionalidades implementadas</span></li>
+    <li><span>14.</span><span>Pruebas realizadas</span></li>
+    <li><span>15.</span><span>Evidencias de funcionamiento</span></li>
+    <li><span>16.</span><span>Conclusiones</span></li>
+    <li><span>17.</span><span>Referencias bibliográficas</span></li>
+  </ol>
+
+  <section class="cont">
+    <h2>1. Introducción</h2>
+    <p>Este documento describe el desarrollo de <strong>Lumen</strong>, un sitio web para una biblioteca comunitaria construido como proyecto integrador del curso Ingeniería Web I. El sitio reúne en una sola interfaz el catálogo de libros con su disponibilidad, un formulario de reserva de préstamos, la agenda de eventos culturales y la información de contacto de la biblioteca.</p>
+    <p>El proyecto aplica lo visto en el curso: estructura semántica con HTML5, presentación con CSS3 (Flexbox, CSS Grid, variables y transiciones), diseño responsivo con enfoque <em>mobile-first</em> y media queries, y una capa de interacción con JavaScript sin librerías externas. El sitio fue probado en tres tamaños de pantalla (computador, tableta y teléfono) y en este documento se presentan las evidencias.</p>
+  </section>
+</section>
+
+<section class="page">
+  <h2>2. Descripción de la problemática</h2>
+  <p>En muchas bibliotecas de barrio y municipales la información para los usuarios está dispersa: el catálogo solo se puede consultar en el mostrador, los horarios se publican en carteleras físicas y los eventos se anuncian por grupos de mensajería que no llegan a todos. Esto genera tres problemas concretos:</p>
+  <ul>
+    <li><strong>Viajes perdidos:</strong> el lector se desplaza a la biblioteca y descubre que el libro que buscaba está prestado.</li>
+    <li><strong>Baja participación en eventos:</strong> los clubes de lectura, la hora del cuento y los talleres tienen poca asistencia porque la comunidad no se entera a tiempo.</li>
+    <li><strong>Atención saturada:</strong> el personal dedica buena parte del día a responder por teléfono preguntas repetidas sobre horarios, requisitos de inscripción y disponibilidad de libros.</li>
+  </ul>
+
+  <h2 style="margin-top:0.8cm">3. Justificación del proyecto</h2>
+  <p>La mayoría de los usuarios de la biblioteca tiene un teléfono inteligente, pero no existe un canal digital que les permita resolver estas necesidades por su cuenta. Una interfaz web es la opción más accesible: no requiere instalar una aplicación, funciona en cualquier navegador y se adapta al tamaño de pantalla del dispositivo.</p>
+  <p>Con un catálogo consultable, la posibilidad de apartar un libro y una agenda visible, se reducen los desplazamientos innecesarios, aumenta la participación en actividades culturales y el personal puede dedicar más tiempo a la atención presencial. Además, el proyecto permite aplicar de forma integrada los contenidos del curso sobre una necesidad real.</p>
+
+  <h2 style="margin-top:0.8cm">4. Objetivo general</h2>
+  <p>Desarrollar una interfaz web funcional, estructurada, atractiva y responsiva para la biblioteca comunitaria Lumen, que permita a los usuarios consultar el catálogo, reservar préstamos y conocer la agenda cultural desde un computador, una tableta o un teléfono móvil, aplicando buenas prácticas de HTML5 y CSS3.</p>
+
+  <h2 style="margin-top:0.8cm">5. Objetivos específicos</h2>
+  <ol>
+    <li>Estructurar las cuatro páginas del sitio con elementos semánticos de HTML5 que faciliten la navegación y la accesibilidad.</li>
+    <li>Diseñar un sistema visual coherente (colores, tipografías, tarjetas y botones) con hojas de estilo CSS3 organizadas y variables reutilizables.</li>
+    <li>Implementar un diseño responsivo con Flexbox, CSS Grid, unidades relativas y media queries que se adapte a teléfono, tableta y computador.</li>
+    <li>Incorporar interacciones con un propósito claro: búsqueda y filtros del catálogo, detalle de libros, formulario de reserva con validación, agenda personal de eventos y galería de imágenes.</li>
+    <li>Verificar el funcionamiento en diferentes resoluciones, corregir los problemas encontrados y documentar las evidencias.</li>
+  </ol>
+</section>
+
+<section>
+  <h2>6. Público objetivo</h2>
+  <table>
+    <thead><tr><th>Segmento</th><th>Necesidad principal</th><th>Cómo lo atiende el sitio</th></tr></thead>
+    <tbody>
+      <tr><td>Estudiantes de colegio y universidad (14 a 25 años)</td><td>Saber si un libro está disponible y apartarlo.</td><td>Catálogo con filtros y botón «Reservar».</td></tr>
+      <tr><td>Padres y madres de familia</td><td>Actividades para sus hijos y libros infantiles.</td><td>Filtro de eventos por público y categoría «Infantil».</td></tr>
+      <tr><td>Adultos y adultos mayores</td><td>Horarios, trámites y alfabetización digital.</td><td>Tipografía grande, botones amplios, horario con el día actual resaltado.</td></tr>
+      <tr><td>Personal de la biblioteca</td><td>Reducir consultas repetidas.</td><td>Preguntas frecuentes y datos de contacto visibles.</td></tr>
+    </tbody>
+  </table>
+
+  <h2 style="margin-top:0.8cm">7. Descripción de la solución propuesta</h2>
+  <p>Lumen es un sitio web estático de cuatro páginas enlazadas entre sí mediante un menú principal. Cada página atiende una necesidad de la problemática:</p>
+  <table>
+    <thead><tr><th>Página</th><th>Propósito</th><th>Funcionalidades principales</th></tr></thead>
+    <tbody>
+      <tr><td><code>index.html</code><br>Inicio</td><td>Presentar la biblioteca y llevar al usuario a las acciones clave.</td><td>Búsqueda rápida, indicadores animados, servicios, libros destacados, testimonios, preguntas frecuentes desplegables y llamado a la acción.</td></tr>
+      <tr><td><code>catalogo.html</code><br>Catálogo</td><td>Consultar libros y su disponibilidad.</td><td>Búsqueda en vivo por título o autor, filtro por categoría y disponibilidad, ordenamiento, ventana modal con el detalle y botón «Avisarme» para libros prestados.</td></tr>
+      <tr><td><code>eventos.html</code><br>Eventos</td><td>Dar a conocer la agenda cultural y los espacios.</td><td>Filtro por público, agenda personal («Guardar en mi agenda»), galería con visor ampliado y video de recorrido.</td></tr>
+      <tr><td><code>reservas.html</code><br>Reservas y contacto</td><td>Apartar un libro y encontrar la biblioteca.</td><td>Formulario validado, lista «Mis reservas» con opción de cancelar, horario con el día actual resaltado, datos de contacto y mapa.</td></tr>
+    </tbody>
+  </table>
+  <div class="box">Las reservas, la agenda y las preferencias (tema oscuro, avisos) se guardan en el navegador con <code>localStorage</code>. Al ser un proyecto de interfaz (front-end), no se envían datos a un servidor; la estructura queda lista para conectarse a un servicio real en una siguiente etapa.</div>
+</section>
+
+<section class="page">
+  <h2>8. Arquitectura y estructura de la interfaz</h2>
+  <h3>8.1 Estructura de archivos</h3>
+  <pre>Proyecto-Integrador-Web-I/
+├── index.html            Página de inicio
+├── catalogo.html         Catálogo con filtros y detalle
+├── eventos.html          Agenda cultural, galería y video
+├── reservas.html         Formulario de reserva, horario y contacto
+├── css/
+│   └── styles.css        Hoja de estilos única (mobile-first)
+├── js/
+│   └── main.js           Interacciones (JavaScript sin librerías)
+├── img/                  Logo, ilustraciones y portadas (SVG)
+│   ├── libros/           12 portadas de libros
+│   ├── eventos/          4 imágenes de eventos
+│   └── galeria/          6 imágenes de espacios
+├── media/                Video del recorrido (MP4) y póster
+├── docs/
+│   ├── Documentacion-Proyecto-Lumen.pdf
+│   ├── evidencias/       Capturas en computador, tableta y móvil
+│   └── fuente/           Fuente HTML de este documento
+└── README.md</pre>
+
+  <h3>8.2 Mapa del sitio y distribución común</h3>
+  <p>Todas las páginas comparten la misma estructura base para que la navegación sea predecible:</p>
+  <pre>┌──────────────────────────────────────────────────────────┐
+│ &lt;header&gt;  Logo · &lt;nav&gt; menú principal · tema · ☰ (móvil)  │
+├──────────────────────────────────────────────────────────┤
+│ &lt;main&gt;                                                   │
+│   Encabezado de página (título, ruta de navegación)      │
+│   &lt;section&gt; contenido 1  (tarjetas en CSS Grid)          │
+│   &lt;section&gt; contenido 2  (formulario, galería, FAQ…)    │
+│   &lt;dialog&gt;  ventanas modales (detalle / visor)          │
+├──────────────────────────────────────────────────────────┤
+│ &lt;footer&gt;  Descripción · navegación · horario · contacto  │
+└──────────────────────────────────────────────────────────┘
+
+Inicio ──┬── Catálogo ──(Reservar)──► Reservas y contacto
+         ├── Eventos
+         └── Reservas y contacto</pre>
+  <p>Los enlaces entre páginas transportan contexto: la búsqueda rápida del inicio abre el catálogo ya filtrado (<code>catalogo.html?q=…</code>) y el botón «Reservar» de un libro abre el formulario con ese libro preseleccionado (<code>reservas.html?libro=…</code>).</p>
+
+  <h2 style="margin-top:0.6cm">9. Tecnologías utilizadas</h2>
+  <table>
+    <thead><tr><th>Tecnología</th><th>Uso en el proyecto</th></tr></thead>
+    <tbody>
+      <tr><td>HTML5</td><td>Estructura semántica, formularios con validación nativa, <code>&lt;dialog&gt;</code>, <code>&lt;details&gt;</code>, <code>&lt;video&gt;</code>.</td></tr>
+      <tr><td>CSS3</td><td>Variables, Flexbox, CSS Grid, media queries, <code>clamp()</code>, transiciones y tema oscuro.</td></tr>
+      <tr><td>JavaScript (ES6+)</td><td>Menú móvil, filtros, modales, validación, almacenamiento local.</td></tr>
+      <tr><td>SVG</td><td>Logo, ilustraciones, portadas y mapa: imágenes livianas que se ven nítidas en cualquier pantalla.</td></tr>
+      <tr><td>Google Fonts</td><td>Tipografías <em>Fraunces</em> (títulos) y <em>Nunito Sans</em> (texto).</td></tr>
+      <tr><td>Git y GitHub</td><td>Control de versiones y entrega del repositorio.</td></tr>
+      <tr><td>Visual Studio Code / Microsoft Edge DevTools</td><td>Edición de código y pruebas en distintas resoluciones.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>10. Implementación de HTML5</h2>
+  <p>Cada página declara <code>&lt;!DOCTYPE html&gt;</code>, el idioma (<code>lang="es"</code>), codificación UTF-8, la etiqueta <code>viewport</code> necesaria para el diseño responsivo y una meta descripción. La estructura usa elementos semánticos en lugar de <code>&lt;div&gt;</code> genéricos:</p>
+  <table>
+    <thead><tr><th>Elemento</th><th>Dónde se usa</th></tr></thead>
+    <tbody>
+      <tr><td><code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;footer&gt;</code></td><td>Encabezado con menú principal, contenido principal y pie de página en todas las páginas.</td></tr>
+      <tr><td><code>&lt;section&gt;</code> + <code>aria-labelledby</code></td><td>Cada bloque temático (servicios, destacados, FAQ, galería…) asociado a su título.</td></tr>
+      <tr><td><code>&lt;article&gt;</code></td><td>Tarjetas independientes: libros, servicios y eventos.</td></tr>
+      <tr><td><code>&lt;aside&gt;</code></td><td>Panel «Mis reservas» complementario al formulario.</td></tr>
+      <tr><td><code>&lt;figure&gt;</code>, <code>&lt;figcaption&gt;</code></td><td>Ilustración principal, mapa, video y visor de la galería.</td></tr>
+      <tr><td><code>&lt;dl&gt;</code>, <code>&lt;dt&gt;</code>, <code>&lt;dd&gt;</code></td><td>Indicadores numéricos y ficha técnica del libro.</td></tr>
+      <tr><td><code>&lt;blockquote&gt;</code></td><td>Testimonios de lectores.</td></tr>
+      <tr><td><code>&lt;details&gt;</code>, <code>&lt;summary&gt;</code></td><td>Preguntas frecuentes desplegables sin JavaScript.</td></tr>
+      <tr><td><code>&lt;dialog&gt;</code></td><td>Ventana modal de detalle del libro y visor de imágenes.</td></tr>
+      <tr><td><code>&lt;table&gt;</code>, <code>&lt;caption&gt;</code>, <code>&lt;th scope&gt;</code></td><td>Horario de atención.</td></tr>
+      <tr><td><code>&lt;video&gt;</code> con <code>poster</code></td><td>Recorrido por las instalaciones.</td></tr>
+      <tr><td><code>&lt;address&gt;</code>, <code>&lt;time&gt;</code></td><td>Datos de contacto y fechas de eventos.</td></tr>
+      <tr><td><code>&lt;form&gt;</code>, <code>&lt;fieldset&gt;</code>, <code>&lt;legend&gt;</code>, <code>&lt;label&gt;</code></td><td>Formulario de reserva agrupado en «Datos del lector» y «Detalle de la reserva».</td></tr>
+    </tbody>
+  </table>
+  <h3>Formularios</h3>
+  <p>El formulario aprovecha los tipos de entrada de HTML5 (<code>email</code>, <code>tel</code>, <code>date</code>, <code>search</code>) y los atributos de validación <code>required</code>, <code>pattern</code>, <code>minlength</code>, <code>maxlength</code>, <code>min</code> y <code>max</code>. Los atributos <code>autocomplete</code> e <code>inputmode</code> facilitan el llenado en el celular (por ejemplo, el documento abre el teclado numérico).</p>
+  <h3>Accesibilidad</h3>
+  <ul>
+    <li>Enlace «Saltar al contenido» para usuarios de teclado.</li>
+    <li>Todas las imágenes tienen texto alternativo; las decorativas usan <code>alt=""</code>.</li>
+    <li>El botón del menú usa <code>aria-expanded</code> y <code>aria-controls</code>; la página actual se marca con <code>aria-current="page"</code>.</li>
+    <li>Los mensajes de error y de resultados usan <code>aria-live</code> para que los lectores de pantalla los anuncien.</li>
+    <li>Foco visible personalizado (<code>:focus-visible</code>) y soporte de <code>prefers-reduced-motion</code>.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>11. Implementación de CSS3</h2>
+  <p>Todo el estilo está en un solo archivo, <code>css/styles.css</code>, organizado en 12 bloques comentados (variables, base, botones, encabezado, hero, tarjetas, catálogo, galería, formularios, FAQ, pie de página y media queries). Se usa una nomenclatura tipo BEM (<code>.card__body</code>, <code>.btn--primary</code>) para que las clases sean fáciles de leer.</p>
+  <h3>Variables (custom properties)</h3>
+  <pre>:root {
+  --color-ink: #14403f;    --color-amber: #e8a33d;
+  --color-paper: #fbf7ee;  --radius: 1rem;
+  --font-title: "Fraunces", Georgia, serif;
+}
+:root[data-theme="dark"] { --color-paper: #0f1717; --color-text: #e9efe9; }</pre>
+  <p>Los colores, radios, sombras y tipografías se definen una sola vez. Gracias a esto, el <strong>tema oscuro</strong> solo redefine las variables y toda la interfaz cambia sin duplicar reglas.</p>
+  <h3>Flexbox</h3>
+  <p>Se usa para alinear elementos en una dimensión: barra de encabezado (logo, menú y botones), grupos de botones, filtros tipo «chip», pie de las tarjetas, elementos de la lista de reservas y la columna interna de cada tarjeta (<code>flex-direction: column</code> con <code>margin-top: auto</code> para alinear los botones al final).</p>
+  <h3>CSS Grid</h3>
+  <p>Se usa para los diseños en dos dimensiones:</p>
+  <ul>
+    <li>Cuadrículas de tarjetas que se ajustan solas: <code>grid-template-columns: repeat(auto-fill, minmax(min(100%, 10rem), 1fr))</code>.</li>
+    <li>Hero en dos columnas (<code>1.1fr 0.9fr</code>) y secciones de dos columnas en reservas y eventos.</li>
+    <li>Galería tipo mosaico en la que la primera imagen ocupa 2×2 celdas (<code>grid-column: span 2; grid-row: span 2</code>).</li>
+    <li>Pie de página de 1, 3 o 4 columnas según el ancho.</li>
+  </ul>
+  <h3>Otros recursos de CSS3</h3>
+  <ul>
+    <li>Tipografía fluida con <code>clamp()</code>, por ejemplo <code>font-size: clamp(2rem, 6vw, 3.5rem)</code>.</li>
+    <li>Ancho de contenedor con <code>min()</code>: <code>width: min(100% - 2rem, 72rem)</code>.</li>
+    <li><code>aspect-ratio</code> y <code>object-fit: cover</code> para que portadas e imágenes mantengan su proporción.</li>
+    <li>Transiciones y transformaciones en botones, tarjetas (efecto de elevación) e imágenes (zoom al pasar el cursor).</li>
+    <li>Degradados (<code>linear-gradient</code>, <code>radial-gradient</code>), sombras y <code>backdrop-filter</code> en el encabezado fijo (<code>position: sticky</code>).</li>
+    <li>Pseudoelementos (<code>::after</code>, <code>::backdrop</code>) para el ícono «+» de las preguntas frecuentes y el fondo de las ventanas modales.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>12. Diseño responsivo</h2>
+  <p>El sitio se diseñó con enfoque <strong>mobile-first</strong>: los estilos base corresponden al teléfono y las media queries con <code>min-width</code> agregan columnas y espacio a medida que crece la pantalla. Los puntos de quiebre se expresan en <code>em</code> para que respeten el tamaño de letra configurado por el usuario.</p>
+  <table>
+    <thead><tr><th>Rango</th><th>Media query</th><th>Cambios principales</th></tr></thead>
+    <tbody>
+      <tr><td>Teléfono (&lt; 480 px)</td><td>Estilos base</td><td>Una columna; menú hamburguesa desplegable; libros en 2 columnas; botones de ancho cómodo para el dedo (mín. 44 px de alto).</td></tr>
+      <tr><td>Teléfono grande (≥ 480 px)</td><td><code>(min-width: 30em)</code></td><td>Indicadores en 4 columnas; modal de detalle con portada al lado del texto.</td></tr>
+      <tr><td>Tableta (≥ 768 px)</td><td><code>(min-width: 48em)</code></td><td>Hero en dos columnas; filtros en una fila; destacados en 4 columnas; galería en 3; campos del formulario en pares; pie de página en 3 columnas.</td></tr>
+      <tr><td>Computador (≥ 1024 px)</td><td><code>(min-width: 64em)</code></td><td>Menú horizontal visible (se oculta la hamburguesa); reservas y eventos en dos columnas; galería tipo mosaico; pie de página en 4 columnas.</td></tr>
+    </tbody>
+  </table>
+  <h3>Técnicas aplicadas</h3>
+  <ul>
+    <li><strong>Diseño flexible:</strong> cuadrículas con <code>auto-fill</code> y <code>minmax()</code> que cambian el número de columnas sin media queries adicionales.</li>
+    <li><strong>Unidades relativas:</strong> <code>rem</code>, <code>em</code>, <code>%</code>, <code>vw</code>, <code>vh</code> y <code>fr</code> en lugar de píxeles fijos.</li>
+    <li><strong>Imágenes adaptables:</strong> <code>max-width: 100%; height: auto</code>, atributos <code>width</code>/<code>height</code> para evitar saltos de contenido, carga diferida (<code>loading="lazy"</code>) e imágenes vectoriales SVG.</li>
+    <li><strong>Menús adaptables:</strong> en teléfono y tableta el menú se oculta tras el botón hamburguesa y se despliega con una animación; en computador se muestra en línea.</li>
+    <li><strong>Contenidos adaptables:</strong> tablas, formularios y ventanas modales usan anchos máximos y se reorganizan en una sola columna en pantallas pequeñas.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>13. Funcionalidades implementadas</h2>
+  <table>
+    <thead><tr><th>Funcionalidad</th><th>Página</th><th>Propósito dentro de la solución</th></tr></thead>
+    <tbody>
+      <tr><td>Menú hamburguesa</td><td>Todas</td><td>Navegar en pantallas pequeñas sin ocupar espacio; se cierra con la tecla Esc o al elegir una opción.</td></tr>
+      <tr><td>Tema claro/oscuro</td><td>Todas</td><td>Lectura cómoda de noche; la preferencia se recuerda.</td></tr>
+      <tr><td>Búsqueda rápida</td><td>Inicio</td><td>Buscar un libro desde la portada y llegar al catálogo ya filtrado.</td></tr>
+      <tr><td>Indicadores animados</td><td>Inicio</td><td>Mostrar el alcance de la biblioteca; los números cuentan al aparecer en pantalla.</td></tr>
+      <tr><td>Preguntas frecuentes desplegables</td><td>Inicio</td><td>Resolver dudas comunes sin llamar a la biblioteca.</td></tr>
+      <tr><td>Búsqueda en vivo, filtros y orden</td><td>Catálogo</td><td>Encontrar libros por texto, categoría y disponibilidad; muestra el número de resultados o un mensaje si no hay coincidencias.</td></tr>
+      <tr><td>Ventana de detalle</td><td>Catálogo</td><td>Ver descripción, autor, año y páginas antes de reservar.</td></tr>
+      <tr><td>«Avisarme»</td><td>Catálogo</td><td>Marcar libros prestados que interesan al lector.</td></tr>
+      <tr><td>Filtro por público y agenda personal</td><td>Eventos</td><td>Encontrar actividades adecuadas y guardarlas; los eventos guardados quedan resaltados.</td></tr>
+      <tr><td>Galería con visor</td><td>Eventos</td><td>Conocer los espacios; permite avanzar y retroceder con botones o flechas del teclado.</td></tr>
+      <tr><td>Video del recorrido</td><td>Eventos</td><td>Recurso multimedia para conocer la biblioteca antes de ir.</td></tr>
+      <tr><td>Formulario de reserva validado</td><td>Reservas</td><td>Apartar un libro: valida nombre, documento (6-10 dígitos), celular (10 dígitos que empiezan por 3), correo, libro, fecha (hoy a 30 días, sin domingos) y aceptación del reglamento, con mensajes claros en español.</td></tr>
+      <tr><td>Mis reservas</td><td>Reservas</td><td>Consultar el código de la reserva y cancelarla.</td></tr>
+      <tr><td>Horario con el día actual</td><td>Reservas</td><td>Saber de un vistazo si la biblioteca está abierta hoy.</td></tr>
+      <tr><td>Botón «volver arriba»</td><td>Todas</td><td>Regresar al inicio de páginas largas en el celular.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>14. Pruebas realizadas</h2>
+  <p>Las pruebas se hicieron con Microsoft Edge y su modo de emulación de dispositivos en tres resoluciones: <strong>computador 1440×900</strong>, <strong>tableta 768×1024</strong> y <strong>teléfono 390×844</strong>. Además de la revisión visual se automatizaron las interacciones principales:</p>
+  <table>
+    <thead><tr><th>Prueba</th><th>Resultado esperado</th><th>Resultado</th></tr></thead>
+    <tbody>
+      <tr><td>Abrir el menú en el teléfono</td><td>El menú se despliega y el botón indica «abierto».</td><td class="ok">Correcto</td></tr>
+      <tr><td>Buscar «garcia» desde el inicio</td><td>El catálogo muestra 1 libro (sin importar tildes).</td><td class="ok">Correcto</td></tr>
+      <tr><td>Filtrar por la categoría Ciencia</td><td>Se muestran 2 libros.</td><td class="ok">Correcto</td></tr>
+      <tr><td>Buscar un texto inexistente</td><td>Aparece el mensaje «No encontramos libros…».</td><td class="ok">Correcto</td></tr>
+      <tr><td>Abrir el detalle de un libro</td><td>La ventana modal muestra los datos del libro.</td><td class="ok">Correcto</td></tr>
+      <tr><td>Guardar dos eventos</td><td>«Tienes 2 eventos guardados» y tarjetas resaltadas.</td><td class="ok">Correcto</td></tr>
+      <tr><td>Enviar el formulario vacío</td><td>7 campos marcados con error y mensajes explicativos.</td><td class="ok">Correcto</td></tr>
+      <tr><td>Reservar desde «Reservar» de Cosmos</td><td>El libro llega preseleccionado; al enviar aparece el código y la reserva en «Mis reservas».</td><td class="ok">Correcto</td></tr>
+      <tr><td>Consola del navegador</td><td>Sin errores de JavaScript ni recursos faltantes.</td><td class="ok">Correcto</td></tr>
+    </tbody>
+  </table>
+  <h3>Problemas encontrados y corregidos</h3>
+  <table>
+    <thead><tr><th>Problema</th><th>Dispositivo</th><th>Corrección</th></tr></thead>
+    <tbody>
+      <tr><td>Las barras del ícono hamburguesa quedaban muy separadas y al abrir formaban «&gt;» en vez de «✕».</td><td>Teléfono / tableta</td><td>El botón pasó a usar Flexbox en columna centrada para que las tres barras queden juntas y roten correctamente.</td></tr>
+      <tr><td>Las portadas del catálogo se veían demasiado grandes (solo 2 por fila).</td><td>Tableta</td><td>Se creó la clase <code>.grid--books</code> con columnas mínimas de 10-11 rem.</td></tr>
+      <tr><td>El formulario en dos columnas quedaba muy angosto.</td><td>Tableta</td><td>La distribución en dos columnas se movió al punto de quiebre de computador (64em).</td></tr>
+      <tr><td>La última imagen de la galería quedaba sola en una fila.</td><td>Computador</td><td>El mosaico pasó de 4 a 3 columnas para completar las 9 celdas.</td></tr>
+      <tr><td>Las tarjetas filtradas seguían visibles.</td><td>Todos</td><td>Se agregó <code>[hidden] { display: none !important; }</code>, porque <code>display: flex</code> anulaba el atributo <code>hidden</code>.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="page">
+  <h2>15. Evidencias de funcionamiento</h2>
+  <p>Las capturas completas de cada página en los tres dispositivos están en la carpeta <code>docs/evidencias</code> del repositorio. A continuación se presentan las principales.</p>
+  <h3>15.1 Vista de computador (1440 × 900)</h3>
+  <figure class="h-desk"><img src="../evidencias/1-computador-index.png" alt=""><figcaption>Figura 1. Inicio en computador: menú horizontal y hero en dos columnas.</figcaption></figure>
+  <figure class="h-desk"><img src="../evidencias/5-computador-filtro-ciencia.png" alt=""><figcaption>Figura 2. Catálogo filtrado por la categoría Ciencia.</figcaption></figure>
+
+  <figure class="h-desk"><img src="../evidencias/5-computador-detalle-libro.png" alt=""><figcaption>Figura 3. Ventana modal con el detalle de un libro.</figcaption></figure>
+  <figure class="h-desk"><img src="../evidencias/6-computador-galeria-visor.png" alt=""><figcaption>Figura 4. Visor ampliado de la galería de espacios.</figcaption></figure>
+
+  <figure class="h-desk"><img src="../evidencias/6-computador-eventos-guardados.png" alt=""><figcaption>Figura 5. Eventos guardados en la agenda personal (resaltados).</figcaption></figure>
+  <figure class="h-desk"><img src="../evidencias/1-computador-reservas.png" alt=""><figcaption>Figura 6. Reservas y contacto en dos columnas.</figcaption></figure>
+
+  <h3 style="break-before: page">15.2 Vista de tableta (768 × 1024)</h3>
+  <div class="row h-tab">
+    <figure><img src="../evidencias/2-tableta-index.png" alt=""><figcaption>Figura 7. Inicio en tableta.</figcaption></figure>
+    <figure><img src="../evidencias/5-tableta-busqueda-garcia.png" alt=""><figcaption>Figura 8. Búsqueda «garcia» en el catálogo.</figcaption></figure>
+  </div>
+  <div class="row h-tab">
+    <figure><img src="../evidencias/2-tableta-eventos.png" alt=""><figcaption>Figura 9. Eventos en tableta.</figcaption></figure>
+    <figure><img src="../evidencias/7-tableta-reserva-exitosa.png" alt=""><figcaption>Figura 10. Reserva confirmada y lista «Mis reservas».</figcaption></figure>
+  </div>
+
+  <h3 style="break-before: page">15.3 Vista de teléfono móvil (390 × 844)</h3>
+  <div class="row h-mob">
+    <figure><img src="../evidencias/3-movil-index.png" alt=""><figcaption>Figura 11. Inicio en el teléfono.</figcaption></figure>
+    <figure><img src="../evidencias/4-movil-menu-abierto.png" alt=""><figcaption>Figura 12. Menú hamburguesa abierto.</figcaption></figure>
+    <figure><img src="../evidencias/4-movil-tema-oscuro.png" alt=""><figcaption>Figura 13. Tema oscuro.</figcaption></figure>
+  </div>
+  <div class="row h-mob">
+    <figure><img src="../evidencias/3-movil-catalogo.png" alt=""><figcaption>Figura 14. Catálogo en el teléfono.</figcaption></figure>
+    <figure><img src="../evidencias/3-movil-eventos.png" alt=""><figcaption>Figura 15. Eventos en el teléfono.</figcaption></figure>
+    <figure><img src="../evidencias/7-movil-formulario-errores.png" alt=""><figcaption>Figura 16. Validación del formulario.</figcaption></figure>
+  </div>
+  <p>En las tres resoluciones la interfaz conserva su estructura, el texto sigue siendo legible sin hacer zoom, no aparece desplazamiento horizontal y todas las funciones (menú, filtros, modales, formulario) responden igual.</p>
+</section>
+
+<section class="page">
+  <h2>16. Conclusiones</h2>
+  <ul>
+    <li>El uso de elementos semánticos de HTML5 hizo que el código fuera más fácil de leer y mantener, y mejoró la accesibilidad sin esfuerzo adicional: elementos como <code>&lt;details&gt;</code> y <code>&lt;dialog&gt;</code> resolvieron interacciones que antes requerían mucho JavaScript.</li>
+    <li>Las variables de CSS permitieron mantener un sistema visual coherente en las cuatro páginas e implementar el tema oscuro cambiando solo los valores de los colores.</li>
+    <li>Flexbox y CSS Grid se complementan: Flexbox resultó ideal para alinear elementos en una fila (encabezado, botones) y Grid para las cuadrículas de tarjetas y la galería.</li>
+    <li>Diseñar primero para el teléfono obligó a priorizar el contenido. Las pruebas en tres resoluciones permitieron detectar y corregir cinco problemas que no eran visibles en el computador.</li>
+    <li>Cada interacción responde a una necesidad de la problemática (saber si un libro está disponible, apartarlo, enterarse de los eventos), lo que convierte el sitio en una solución útil para la comunidad y no solo en una página informativa.</li>
+    <li>Como trabajo futuro se propone conectar el formulario y el catálogo a un servidor con base de datos para que las reservas lleguen al personal de la biblioteca en tiempo real.</li>
+  </ul>
+
+  <h2 style="margin-top:0.8cm">17. Referencias bibliográficas</h2>
+  <ul>
+    <li>Stolley, K. (2022). <em>Programming WebRTC: Build real-time streaming applications for the web</em>. Pragmatic Bookshelf.</li>
+    <li>Sáenz, A. (2025). <em>Cómo crear una página web desde cero</em> [Video]. YouTube.</li>
+    <li>Mozilla Developer Network. (2026). <em>HTML: Lenguaje de etiquetas de hipertexto</em>. https://developer.mozilla.org/es/docs/Web/HTML</li>
+    <li>Mozilla Developer Network. (2026). <em>CSS: Hojas de estilo en cascada</em>. https://developer.mozilla.org/es/docs/Web/CSS</li>
+    <li>Mozilla Developer Network. (2026). <em>Diseño web adaptable (responsive)</em>. https://developer.mozilla.org/es/docs/Learn/CSS/CSS_layout/Responsive_Design</li>
+    <li>W3C. (2023). <em>Web Content Accessibility Guidelines (WCAG) 2.2</em>. https://www.w3.org/TR/WCAG22/</li>
+    <li>CSS-Tricks. (2024). <em>A Complete Guide to CSS Grid</em> y <em>A Complete Guide to Flexbox</em>. https://css-tricks.com</li>
+  </ul>
+</section>
+
+</body>
+</html>
